@@ -37,7 +37,7 @@ deviseモジュールをインストール
 deviseの設定をインストール
 -------------------
 ```
-rails generate devise:install
+% rails generate devise:install
 ```
 これを実行すると、いろいろ設定する事項が表示されるので次のように1つずつ設定していく。
 
@@ -49,8 +49,8 @@ vi config/environments/development.rb
 ```
 
 以下の行を追加
-```
-config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+```diff
+  + config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 ```
 
 
@@ -58,8 +58,8 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 -------------------
 
 rootを以下のように設定
-```
-  root :to => 'posts#index'
+```diff
+  + root :to => 'posts#index'
 ```
 
 
@@ -71,7 +71,7 @@ rootを以下のように設定
 ```
 
 
-```
+```diff
 +    <p class="notice"><%= notice %></p>
 +    <p class="alert"><%= alert %></p>
 ```
@@ -87,7 +87,7 @@ herokuを使っている場合にはこの設定を行う
 ```
 
 
-```
+```diff
      +    # devise setting for heroku
      +    config.assets.initialize_on_precompile = false
 ```
@@ -110,14 +110,14 @@ deviseのmodelやrouteを追加する
 -------------------
 
 ```
-rails generate devise users
+% rails generate devise users
 ```
 
 
 devise用のテーブルを作成する
 -------------------
 ```
-rake db:migrate
+% rake db:migrate
 ```
 
 
@@ -128,7 +128,7 @@ rake db:migrate
 % vi app/controllers/posts_controller.rb
 ```
 
-```
+```diff
 + before_filter :authenticate_user!
 ```
 
@@ -137,6 +137,8 @@ rake db:migrate
 -------------------
 - 開いてみると、ログイン画面が表示されるはず。
   - http://127.0.0.1/
-  - https://www.evernote.com/shard/s23/sh/80f9d0b0-ef20-4c0f-87be-c71e43791287/aee3d51c1d96cc2959bef0c7fea4a3c8
+
+![screen shot](https://www.evernote.com/shard/s23/sh/80f9d0b0-ef20-4c0f-87be-c71e43791287/aee3d51c1d96cc2959bef0c7fea4a3c8/res/e7a47a82-dc1d-4ccd-9f98-4426fdd3e086/skitch.png?resizeSmall&width=832 "Screenshot")
+
 
 
