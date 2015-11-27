@@ -5,6 +5,9 @@ devise sample
 - 細かい設定とか、自分のサイトにあった設定はこれを元にオプションを変更していただければと思います。
 - 1手順ごとにコミットを分けてあるので、変更点が明確に分かるようになっています。
   - 一部、手順が前後しても大丈夫なところがあるので間あり神経質にならなくても大丈夫です。
+- このブランチはRails3.2を前提に作られています。Rails 4.2のコードは以下のブランチにあります。
+  - https://github.com/matsubo/devise_sample/tree/feature/rails42
+  - 手順は同じです。Railsの初期に作られるコードなどが大きく変わっています。
 
 
 railsアプリケーション作成
@@ -50,7 +53,7 @@ vi config/environments/development.rb
 
 以下の行を追加
 ```diff
-  + config.action_mailer.default_url_options = { :host => 'localhost:3000' }
++ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 ```
 
 
@@ -59,7 +62,7 @@ vi config/environments/development.rb
 
 rootを以下のように設定
 ```diff
-  + root :to => 'posts#index'
++ root :to => 'posts#index'
 ```
 
 
@@ -88,8 +91,8 @@ herokuを使っている場合にはこの設定を行う
 
 
 ```diff
-     +    # devise setting for heroku
-     +    config.assets.initialize_on_precompile = false
++    # devise setting for heroku
++    config.assets.initialize_on_precompile = false
 ```
 
 
@@ -133,6 +136,16 @@ devise用のテーブルを作成する
 ```
 
 
+アカウントを追加
+---
+
+Railsのconsoleからユーザを1つ追加します。
+```
+% rails console
+> User.new({ email: 'foo@example.com', password: 'testtest' }).save
+```
+
+
 動作テスト
 -------------------
 
@@ -141,8 +154,9 @@ devise用のテーブルを作成する
 % rails s
 ```
 
-- 開いてみると、ログイン画面が表示されるはず。
+- 開いてみると、ログイン画面が表示されるます。
   - http://127.0.0.1:3000/
+- 追加したアカウントのメールアドレスとパスワードを入力してログインすると、Postを管理するためのページが表示されます。
 
 ![screen shot](http://matsu.teraren.com/blog/wp-content/uploads/2013/02/Screen-Shot-2015-11-27-at-11.55.18.png "Screenshot")
 
