@@ -135,10 +135,16 @@ devise用のテーブルを作成する
 
 動作テスト
 -------------------
-- 開いてみると、ログイン画面が表示されるはず。
-  - http://127.0.0.1/
 
-![screen shot](https://www.evernote.com/shard/s23/sh/80f9d0b0-ef20-4c0f-87be-c71e43791287/aee3d51c1d96cc2959bef0c7fea4a3c8/res/e7a47a82-dc1d-4ccd-9f98-4426fdd3e086/skitch.png?resizeSmall&width=832 "Screenshot")
+
+```
+% rails s
+```
+
+- 開いてみると、ログイン画面が表示されるはず。
+  - http://127.0.0.1:3000/
+
+![screen shot](http://matsu.teraren.com/blog/wp-content/uploads/2013/02/Screen-Shot-2015-11-27-at-11.55.18.png "Screenshot")
 
 
 
